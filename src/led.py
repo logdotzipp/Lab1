@@ -6,15 +6,6 @@ sent over pin PAO.
 import utime
 import pyb
 
-# def timer_int (tim_num):
-#     
-#     
-#     if (dty >= 100) :
-#         dty = 0
-#     dty = 100 - dty
-#     led_brightness(dty)
-    
-
 def led_setup ():
     """! Doxygen style docstring for this function """
     global ch1
