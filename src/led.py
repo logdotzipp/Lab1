@@ -11,7 +11,11 @@ micropython.alloc_emergency_exception_buf(100)
 def led_setup ():
     """!
     Sets up two timer channels for both the PWM at PA0 and LED callback,
-    respectively. 
+    respectively.
+    @param ch1 Timer channel associated with GPIO PA0.
+    @param tim2 Timer associated with GPIO PA0.
+    @param tim1 Timer Channel used for Callback Method.
+    @param dty Duty Cycle percent used to change LED brightness.
     """
     global ch1
     global tim1
