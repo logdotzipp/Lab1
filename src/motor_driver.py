@@ -11,7 +11,10 @@ class MotorDriver:
         """! 
         Creates a motor driver by initializing GPIO
         pins and turning off the motor for safety. 
-        @param en_pin (There will be several parameters)
+        @param en_pin Pin in the pyboard that enables the motor.
+        @param in1pin First pin used for input to Motor's H-bridge.
+        @param in2pin Second pin used for input to Motor's H-bridge.
+        @param timer Timer channel used to drive PWM.
         """
         print ("Creating a motor driver")
         
