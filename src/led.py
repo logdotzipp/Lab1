@@ -5,24 +5,32 @@ sent over pin PAO.
 
 import utime
 import pyb
+import micropython
+micropython.alloc_emergency_exception_buf(100)
 
 def led_setup ():
-    """! Doxygen style docstring for this function """
+    """!
+    Sets up two timer channels for both the PWM at PA0 and LED callback,
+    respectively. 
+    """
     global ch1
+    global tim1
+    global dty
+    
     pinA0 = pyb.Pin(pyb.Pin.board.PA0, pyb.Pin.OUT_PP)
     tim2 = pyb.Timer(2, freq=20000)
     ch1 = tim2.channel(1, pyb.Timer.PWM_INVERTED, pin=pinA0)
     
-    timmy = pyb.Timer(1, freq = 20)
-    timmy.counter ()
-    timmy.callback(led_brightness)
+    tim1 = pyb.Timer(1, freq = 20)
+    tim1.callback(led_brightness)
     
-    global dty
     dty = 100
-    return ch1
 
 def led_brightness (tim_num):
-    """! Doxygen style docstring for this function """
+    """!
+    Decreases LED brightness by adjusting PWM Duty Cycle
+    from 100% to 0% using Callback Method.
+    """
     global ch1
     global dty
     
@@ -31,14 +39,15 @@ def led_brightness (tim_num):
     dty -= 1
     
     ch1.pulse_width_percent(dty)
-
+    
 if __name__ == "__main__":
     try:
-        ch1 = led_setup()
+        led_setup()
         
         while True:
             continue
 
     except(KeyboardInterrupt):
+        tim1.callback(None)
         print("Program Terminated")
         
