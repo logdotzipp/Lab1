@@ -1,4 +1,8 @@
-
+"""! @file motor_driver.py
+This program creates a Motor driving class that will be used
+for an ME405 kit that both drives the speed and direction of
+the motor.
+"""
 import pyb
 import micropython
 
