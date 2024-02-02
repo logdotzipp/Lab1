@@ -65,13 +65,12 @@ $(function(){initNavTree('classmotor__driver_1_1_motor_driver.html',''); initRes
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="classmotor__driver_1_1_motor_driver-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">motor_driver.MotorDriver Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>This class implements a motor driver for an ME405 kit.  
+<p>This class implements a L6206 H-Bridge Motor Controller Shield.  
  <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -88,24 +87,15 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:ae1d7ed9fc261e665b3348a6432bef471" id="r_ae1d7ed9fc261e665b3348a6432bef471"><td class="memItemLeft" align="right" valign="top"><a id="ae1d7ed9fc261e665b3348a6432bef471" name="ae1d7ed9fc261e665b3348a6432bef471"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>pinEN</b></td></tr>
 <tr class="separator:ae1d7ed9fc261e665b3348a6432bef471"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
-Static Public Attributes</h2></td></tr>
 <tr class="memitem:ab8e6b9bb2310ef67bd751ceb04625f31" id="r_ab8e6b9bb2310ef67bd751ceb04625f31"><td class="memItemLeft" align="right" valign="top"><a id="ab8e6b9bb2310ef67bd751ceb04625f31" name="ab8e6b9bb2310ef67bd751ceb04625f31"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>chIN1A</b></td></tr>
 <tr class="separator:ab8e6b9bb2310ef67bd751ceb04625f31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d923c2a4c064c83d6fdce76936bf562" id="r_a3d923c2a4c064c83d6fdce76936bf562"><td class="memItemLeft" align="right" valign="top"><a id="a3d923c2a4c064c83d6fdce76936bf562" name="a3d923c2a4c064c83d6fdce76936bf562"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>PWM</b></td></tr>
-<tr class="separator:a3d923c2a4c064c83d6fdce76936bf562"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aceb5c7f4fecea7844cfee6e342e5fd83" id="r_aceb5c7f4fecea7844cfee6e342e5fd83"><td class="memItemLeft" align="right" valign="top"><a id="aceb5c7f4fecea7844cfee6e342e5fd83" name="aceb5c7f4fecea7844cfee6e342e5fd83"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>pin</b></td></tr>
-<tr class="separator:aceb5c7f4fecea7844cfee6e342e5fd83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef65d0ab1d0336cd48f6169ec5ee4202" id="r_aef65d0ab1d0336cd48f6169ec5ee4202"><td class="memItemLeft" align="right" valign="top"><a id="aef65d0ab1d0336cd48f6169ec5ee4202" name="aef65d0ab1d0336cd48f6169ec5ee4202"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>chIN2A</b></td></tr>
 <tr class="separator:aef65d0ab1d0336cd48f6169ec5ee4202"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This class implements a motor driver for an ME405 kit. </p>
+<div class="textblock"><p>This class implements a L6206 H-Bridge Motor Controller Shield. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a78821e03ffd2ef58f48c1453413841dd" name="a78821e03ffd2ef58f48c1453413841dd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a78821e03ffd2ef58f48c1453413841dd">&#9670;&#160;</a></span>__init__()</h2>
@@ -144,7 +134,7 @@ Static Public Attributes</h2></td></tr>
 <p>Creates a motor driver by initializing GPIO pins and turning off the motor for safety. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">en_pin</td><td>Pin in the pyboard that enables the motor. </td></tr>
+    <tr><td class="paramname">en_pin</td><td>Pin that enables the motor. </td></tr>
     <tr><td class="paramname">in1pin</td><td>First pin used for input to Motor's H-bridge. </td></tr>
     <tr><td class="paramname">in2pin</td><td>Second pin used for input to Motor's H-bridge. </td></tr>
     <tr><td class="paramname">timer</td><td>Timer channel used to drive PWM. </td></tr>
@@ -175,9 +165,9 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>This method sets the duty cycle to be sent to the motor to the given level. </p>
-<p>Positive values cause torque in one direction, negative values in the opposite direction. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Positive values cause torque in one direction, negative values in the opposite direction. Input levels less than -100 or greater than 100 automatically saturate </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">level</td><td>A signed integer holding the duty cycle of the voltage sent to the motor </td></tr>
+    <tr><td class="paramname">level</td><td>A signed integer for the percent duty cycle sent to the motor. Ideally between -100 and 100. </td></tr>
   </table>
   </dd>
 </dl>
@@ -185,7 +175,7 @@ Static Public Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>src/<a class="el" href="motor__driver_8py.html">motor_driver.py</a></li>
+<li>C:/Users/canny/OneDrive/Desktop/ME_405/Lab1/src/<a class="el" href="motor__driver_8py.html">motor_driver.py</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

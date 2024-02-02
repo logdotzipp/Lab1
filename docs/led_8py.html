@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Lab 1: Motor Driver: src/led.py File Reference</title>
+<title>Lab 1: Motor Driver: C:/Users/canny/OneDrive/Desktop/ME_405/Lab1/src/led.py File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -76,14 +76,34 @@ Functions</h2></td></tr>
 <tr class="memitem:a0bb51b9b8c7c517420c5d8430ddf3ef2" id="r_a0bb51b9b8c7c517420c5d8430ddf3ef2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0bb51b9b8c7c517420c5d8430ddf3ef2">led.led_setup</a> ()</td></tr>
 <tr class="memdesc:a0bb51b9b8c7c517420c5d8430ddf3ef2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets up two timer channels for both the PWM at PA0 and LED callback, respectively.  <br /></td></tr>
 <tr class="separator:a0bb51b9b8c7c517420c5d8430ddf3ef2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d906f391064fea1b818c30e26a5448f" id="r_a0d906f391064fea1b818c30e26a5448f"><td class="memItemLeft" align="right" valign="top"><a id="a0d906f391064fea1b818c30e26a5448f" name="a0d906f391064fea1b818c30e26a5448f"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>led.led_brightness</b> (tim_num)</td></tr>
-<tr class="memdesc:a0d906f391064fea1b818c30e26a5448f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decreases LED brightness by adjusting PWM Duty Cycle from 100% to 0% using Callback Method. <br /></td></tr>
+<tr class="memitem:a0d906f391064fea1b818c30e26a5448f" id="r_a0d906f391064fea1b818c30e26a5448f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d906f391064fea1b818c30e26a5448f">led.led_brightness</a> (tim_num)</td></tr>
+<tr class="memdesc:a0d906f391064fea1b818c30e26a5448f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increases the LED brightness by adjusting PWM Duty Cycle from 0% to 100% on a 20Hz timer.  <br /></td></tr>
 <tr class="separator:a0d906f391064fea1b818c30e26a5448f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This program controls the brightness of an LED using a PWM signal sent over pin PAO. </p>
+<p>The LED grows in brightness from 0% to 100% over 5 seconds, and then drops back down to 0%. It then cycles indefinitely. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a0d906f391064fea1b818c30e26a5448f" name="a0d906f391064fea1b818c30e26a5448f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d906f391064fea1b818c30e26a5448f">&#9670;&#160;</a></span>led_brightness()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">led.led_brightness </td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>tim_num</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Increases the LED brightness by adjusting PWM Duty Cycle from 0% to 100% on a 20Hz timer. </p>
+<p>This results in a full 0-100 cycle over 5 seconds. </p>
+
+</div>
+</div>
 <a id="a0bb51b9b8c7c517420c5d8430ddf3ef2" name="a0bb51b9b8c7c517420c5d8430ddf3ef2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0bb51b9b8c7c517420c5d8430ddf3ef2">&#9670;&#160;</a></span>led_setup()</h2>
 
@@ -104,7 +124,7 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">ch1</td><td>Timer channel associated with GPIO PA0. </td></tr>
     <tr><td class="paramname">tim2</td><td>Timer associated with GPIO PA0. </td></tr>
-    <tr><td class="paramname">tim1</td><td>Timer Channel used for Callback Method. </td></tr>
+    <tr><td class="paramname">tim1</td><td>Timer Channel Callback used for updating the brightness of the LED over time. </td></tr>
     <tr><td class="paramname">dty</td><td>Duty Cycle percent used to change LED brightness. </td></tr>
   </table>
   </dd>
